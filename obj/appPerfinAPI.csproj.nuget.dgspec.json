@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/app/appPerfinAPI/appPerfinAPI.csproj": {}
+    "/app/appPerFinDotNet/appPerfinAPI.csproj": {}
   },
   "projects": {
-    "/app/appPerfinAPI/appPerfinAPI.csproj": {
+    "/app/appPerFinDotNet/appPerfinAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/app/appPerfinAPI/appPerfinAPI.csproj",
+        "projectUniqueName": "/app/appPerFinDotNet/appPerfinAPI.csproj",
         "projectName": "appPerfinAPI",
-        "projectPath": "/app/appPerfinAPI/appPerfinAPI.csproj",
+        "projectPath": "/app/appPerFinDotNet/appPerfinAPI.csproj",
         "packagesPath": "/root/.nuget/packages/",
-        "outputPath": "/app/appPerfinAPI/obj/",
+        "outputPath": "/app/appPerFinDotNet/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/root/.nuget/NuGet/NuGet.Config"
@@ -35,6 +35,30 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite.Core": {
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[5.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
