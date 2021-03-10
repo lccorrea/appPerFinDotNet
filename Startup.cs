@@ -32,7 +32,10 @@ namespace appPerfinAPI
                     context.UseSqlite(Configuration.GetConnectionString("Default"));
                 }
             );
-            services.AddControllers();
+            services.AddScoped<IRepository, Repository>();
+            services.AddControllers();//.AddNewtonsoftJson(
+                    //opt => opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+                    // -- instalar via nuget [Parar loop infinito no select no primeiro nivel];
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
