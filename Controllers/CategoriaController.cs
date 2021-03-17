@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using appPerfinAPI.Data;
 using appPerfinAPI.Models;
+using appPerfinAPI.Dtos;
+using AutoMapper;
 
 namespace appPerfinAPI.Controllers
 {
@@ -12,16 +14,19 @@ namespace appPerfinAPI.Controllers
     public class CategoriaController : ControllerBase
     {
         private readonly IRepository _repo;
+        private readonly IMapper _mapper;
 
-        public CategoriaController(IRepository repository)
+        public CategoriaController(IRepository repository, IMapper mapper)
         {
             _repo = repository;
+            _mapper = mapper;
         }
         
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_repo.ObterCategorias());
+            var result = _repo.ObterCategorias();
+            return Ok(_mapper.Map<IEnumerable<CategoriaDto>>(result));
         }
 
         [HttpGet("{id:int}")]

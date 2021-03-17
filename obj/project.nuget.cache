@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "xRcK9FnC8hnINNy7Tx+u/ebgBedpEVhyG1VOXVFazyQ9Qbvex9+ow6LNHOgIPyjV11ZOGlYnaW8qN4PjF5M5Wg==",
+  "dgSpecHash": "/fRUca3A20FMmWOVRdtOzZiMuUSN7hXQ1/CwQbQh928Yc4iI4Nmg56t0AF19BrxSpUYhvcOGR4GJoeex2IrJuA==",
   "success": true,
   "projectFilePath": "/app/appPerFinDotNet/appPerfinAPI.csproj",
   "expectedPackageFiles": [
+    "/root/.nuget/packages/automapper/10.1.1/automapper.10.1.1.nupkg.sha512",
+    "/root/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/8.1.1/automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "/root/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/root/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/root/.nuget/packages/microsoft.data.sqlite.core/5.0.3/microsoft.data.sqlite.core.5.0.3.nupkg.sha512",
@@ -34,6 +36,7 @@
     "/root/.nuget/packages/system.componentmodel.annotations/5.0.0/system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "/root/.nuget/packages/system.diagnostics.diagnosticsource/5.0.1/system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
     "/root/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
+    "/root/.nuget/packages/system.reflection.emit/4.7.0/system.reflection.emit.4.7.0.nupkg.sha512",
     "/root/.nuget/packages/system.text.encodings.web/5.0.0/system.text.encodings.web.5.0.0.nupkg.sha512",
     "/root/.nuget/packages/system.text.json/5.0.0/system.text.json.5.0.0.nupkg.sha512"
   ],

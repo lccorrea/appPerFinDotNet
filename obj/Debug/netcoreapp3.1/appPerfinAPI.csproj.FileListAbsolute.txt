@@ -79,3 +79,5 @@
 /app/appPerFinDotNet/bin/Debug/netcoreapp3.1/runtimes/win-x64/native/e_sqlite3.dll
 /app/appPerFinDotNet/bin/Debug/netcoreapp3.1/runtimes/win-x86/native/e_sqlite3.dll
 /app/appPerFinDotNet/obj/Debug/netcoreapp3.1/appPerfinAPI.csproj.CopyComplete
+/app/appPerFinDotNet/bin/Debug/netcoreapp3.1/AutoMapper.dll
+/app/appPerFinDotNet/bin/Debug/netcoreapp3.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
