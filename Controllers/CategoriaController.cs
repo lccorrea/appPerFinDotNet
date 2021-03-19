@@ -34,8 +34,9 @@ namespace appPerfinAPI.Controllers
         {
             var categoria = _repo.ObterCategoriaPorID(id);
             if (categoria == null) 
-                return BadRequest("Categoria não foi Encontrada!");                
-            return Ok(categoria);
+                return BadRequest("Categoria não foi Encontrada!");
+            var categoriaDto = _mapper.Map<CategoriaDto>(categoria);
+            return Ok(categoriaDto);
         }
 
         [HttpGet("{sigla}")]
@@ -44,42 +45,45 @@ namespace appPerfinAPI.Controllers
             var categoria = _repo.ObterCategoriaPorSigla(sigla.ToUpper());
             if (categoria == null)
                 return BadRequest("Categoria não foi Encontrada!");
+            var categoriaDto = _mapper.Map<CategoriaDto>(categoria);
             return Ok(categoria);
         }
 
         [HttpPost]
-        public IActionResult Post(Categoria categoria)
+        public IActionResult Post(CategoriaDto cDto)
         {
+            var categoria = _mapper.Map<Categoria>(cDto);
             _repo.Add(categoria);
             if (_repo.SaveChanges())
-                return Ok($"Categoria: {categoria.Descricao} Adicionada com Sucesso!");
+                return Created($"/api/categoria/{cDto.Id}", _mapper.Map<CategoriaDto>(categoria)); 
+                //return Ok($"Categoria: {categoriaDto.Descricao} Adicionada com Sucesso!");
             return BadRequest($"Falha ao tentar cadastrar a Categoria: {categoria.Descricao}");
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Categoria categoria)
+        public IActionResult Put(int id, CategoriaDto cDto)
         {
-            var novaCategoria = this.TrataAtualizacaoForm(categoria, id);
-            if (novaCategoria == null)
+            var categoria = this.TrataAtualizacaoForm(cDto, id);
+            if (categoria == null)
                 return BadRequest("Categoria não foi Encontrada!");
 
-            _repo.Update(novaCategoria);
+            _repo.Update(categoria);
             if (_repo.SaveChanges())
-                return Ok($"Categoria: {novaCategoria.Descricao} alterada com Sucesso!");
-            return BadRequest($"Falha ao tentar atualizar a Categoria: {novaCategoria.Descricao}");
+                return Ok($"Categoria: {categoria.Descricao} alterada com Sucesso!");
+            return BadRequest($"Falha ao tentar atualizar a Categoria: {categoria.Descricao}");
         }
 
         [HttpPatch("{id}")]
-        public IActionResult Patch(int id, Categoria categoria)
+        public IActionResult Patch(int id, CategoriaDto cDto)
         {
-            var novaCategoria = this.TrataAtualizacaoForm(categoria, id);
-            if (novaCategoria == null)
+            var categoria = this.TrataAtualizacaoForm(cDto, id);
+            if (categoria == null)
                 return BadRequest("Categoria não foi Encontrada!");
             
-            _repo.Update(novaCategoria);
+            _repo.Update(categoria);
             if (_repo.SaveChanges())
-                return Ok($"Categoria: {novaCategoria.Descricao} alterada com Sucesso!");
-            return BadRequest($"Falha ao tentar atualizar a Categoria: {novaCategoria.Descricao}");
+                return Ok($"Categoria: {categoria.Descricao} alterada com Sucesso!");
+            return BadRequest($"Falha ao tentar atualizar a Categoria: {categoria.Descricao}");
         }
 
         [HttpDelete("{id}")]
@@ -95,16 +99,21 @@ namespace appPerfinAPI.Controllers
             return BadRequest($"Falha ao tentar excluir a Categoria: {categoriaSelecionada.Descricao}");
         }
 
-        public Categoria TrataAtualizacaoForm(Categoria categoriaForm, int id)
+        public Categoria TrataAtualizacaoForm(CategoriaDto categForm, int id)
         {
-            Categoria categoriaSelecionada = _repo.ObterCategoriaPorID(id);
-            if (categoriaSelecionada == null)
+            var categSelecionada = _repo.ObterCategoriaPorID(id);
+
+            if (categSelecionada == null)
                 return null;
-            if (categoriaForm.Descricao != "" && categoriaForm.Descricao != null)
-                categoriaSelecionada.Descricao = categoriaForm.Descricao;
-            if (categoriaForm.Sigla != "" && categoriaForm.Sigla != null)
-                categoriaSelecionada.Sigla = categoriaForm.Sigla;
-            return categoriaSelecionada;
+            if (categForm.Id < 1)
+                categForm.Id = id;
+            if (categForm.Descricao != "" && categForm.Descricao != null)
+                categSelecionada.Descricao = categSelecionada.Descricao;
+            if (categForm.Sigla != "" && categForm.Sigla != null)
+                categSelecionada.Sigla = categSelecionada.Sigla;
+
+            var categoria = _mapper.Map(categForm, categSelecionada);                
+            return categoria;
         }
         
         //[HttpGet("byId")]

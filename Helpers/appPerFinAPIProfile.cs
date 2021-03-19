@@ -17,6 +17,7 @@ namespace appPerfinAPI.Helpers
                     dest => dest.Idade,
                     opt => opt.MapFrom(src => src.DateNasc.GetCurrentAge())
                 );*/
+            CreateMap<CategoriaDto, Categoria>();
         }
     }
 }
