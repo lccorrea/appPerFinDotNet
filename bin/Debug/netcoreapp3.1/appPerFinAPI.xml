@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>appPerfinAPI</name>
+    </assembly>
+    <members>
+        <member name="T:appPerfinAPI.Controllers.CategoriaController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:appPerfinAPI.Controllers.CategoriaController.#ctor(appPerfinAPI.Data.IRepository,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="repository"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:appPerfinAPI.Controllers.CategoriaController.Get">
+            <summary>
+            Método responsavel por retornar todas as Categorias
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:appPerfinAPI.Controllers.CategoriaController.GetByID(System.Int32)">
+            <summary>
+            Método responsavel por retornar apenas a Categoria do ID requisitado
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:appPerfinAPI.Controllers.CategoriaController.GetBySigla(System.String)">
+            <summary>
+            Método responsavel por retornar apenas as Categorias da SIGLA requisitada
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:appPerfinAPI.Controllers.CategoriaController.Post(appPerfinAPI.Dtos.CategoriaDto)">
+            <summary>
+            Método responsavel pela criação de uma nova Categoria
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:appPerfinAPI.Controllers.CategoriaController.Put(System.Int32,appPerfinAPI.Dtos.CategoriaDto)">
+            <summary>
+            Método responsavel pela atualização de uma Categoria
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:appPerfinAPI.Controllers.CategoriaController.Patch(System.Int32,appPerfinAPI.Dtos.CategoriaDto)">
+            <summary>
+            Método responsavel pela atualização de uma Categoria
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:appPerfinAPI.Controllers.CategoriaController.Delete(System.Int32)">
+            <summary>
+            Método responsavel pela exclusão de uma Categoria
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

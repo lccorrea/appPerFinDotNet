@@ -1,14 +1,17 @@
 using System.Collections.Generic;
-using System.Linq;
+//using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+//using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 using appPerfinAPI.Data;
 using appPerfinAPI.Models;
 using appPerfinAPI.Dtos;
-using AutoMapper;
 
 namespace appPerfinAPI.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class CategoriaController : ControllerBase
@@ -16,12 +19,21 @@ namespace appPerfinAPI.Controllers
         private readonly IRepository _repo;
         private readonly IMapper _mapper;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="repository"></param>
+        /// <param name="mapper"></param>
         public CategoriaController(IRepository repository, IMapper mapper)
         {
             _repo = repository;
             _mapper = mapper;
         }
         
+        /// <summary>
+        /// Método responsavel por retornar todas as Categorias
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -29,6 +41,10 @@ namespace appPerfinAPI.Controllers
             return Ok(_mapper.Map<IEnumerable<CategoriaDto>>(result));
         }
 
+        /// <summary>
+        /// Método responsavel por retornar apenas a Categoria do ID requisitado
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("{id:int}")]
         public IActionResult GetByID(int id)
         {
@@ -39,6 +55,10 @@ namespace appPerfinAPI.Controllers
             return Ok(categoriaDto);
         }
 
+        /// <summary>
+        /// Método responsavel por retornar apenas as Categorias da SIGLA requisitada
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("{sigla}")]
         public IActionResult GetBySigla(string sigla)
         {
@@ -49,6 +69,10 @@ namespace appPerfinAPI.Controllers
             return Ok(categoria);
         }
 
+        /// <summary>
+        /// Método responsavel pela criação de uma nova Categoria
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Post(CategoriaDto cDto)
         {
@@ -60,6 +84,10 @@ namespace appPerfinAPI.Controllers
             return BadRequest($"Falha ao tentar cadastrar a Categoria: {categoria.Descricao}");
         }
 
+        /// <summary>
+        /// Método responsavel pela atualização de uma Categoria
+        /// </summary>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public IActionResult Put(int id, CategoriaDto cDto)
         {
@@ -73,6 +101,10 @@ namespace appPerfinAPI.Controllers
             return BadRequest($"Falha ao tentar atualizar a Categoria: {categoria.Descricao}");
         }
 
+        /// <summary>
+        /// Método responsavel pela atualização de uma Categoria
+        /// </summary>
+        /// <returns></returns>
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, CategoriaDto cDto)
         {
@@ -85,6 +117,11 @@ namespace appPerfinAPI.Controllers
                 return Ok($"Categoria: {categoria.Descricao} alterada com Sucesso!");
             return BadRequest($"Falha ao tentar atualizar a Categoria: {categoria.Descricao}");
         }
+
+        /// <summary>
+        /// Método responsavel pela exclusão de uma Categoria
+        /// </summary>
+        /// <returns></returns>
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
@@ -99,7 +136,7 @@ namespace appPerfinAPI.Controllers
             return BadRequest($"Falha ao tentar excluir a Categoria: {categoriaSelecionada.Descricao}");
         }
 
-        public Categoria TrataAtualizacaoForm(CategoriaDto categForm, int id)
+        private Categoria TrataAtualizacaoForm(CategoriaDto categForm, int id)
         {
             var categSelecionada = _repo.ObterCategoriaPorID(id);
 
@@ -115,6 +152,7 @@ namespace appPerfinAPI.Controllers
             var categoria = _mapper.Map(categForm, categSelecionada);                
             return categoria;
         }
+ 
         
         //[HttpGet("byId")]
         //CHAMADA api/categoria/byId?id=1

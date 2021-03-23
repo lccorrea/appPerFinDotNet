@@ -17,7 +17,7 @@
     "optimize": false,
     "keyFile": "",
     "emitEntryPoint": true,
-    "xmlDoc": false,
+    "xmlDoc": true,
     "debugType": "portable"
   },
   "targets": {
@@ -30,6 +30,8 @@
           "Microsoft.EntityFrameworkCore.Sqlite": "5.0.3",
           "Microsoft.EntityFrameworkCore.Sqlite.Core": "5.0.3",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.3",
+          "Microsoft.OpenApi": "1.2.3",
+          "Swashbuckle.AspNetCore": "6.1.1",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -463,6 +465,7 @@
           "Microsoft.EntityFrameworkCore.Design": "5.0.3"
         }
       },
+      "Microsoft.Extensions.ApiDescription.Server/3.0.0": {},
       "Microsoft.Extensions.Caching.Abstractions/5.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "5.0.0"
@@ -604,6 +607,17 @@
           "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {}
         }
       },
+      "Microsoft.OpenApi/1.2.3": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {
+            "assemblyVersion": "1.2.3.0",
+            "fileVersion": "1.2.3.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
+        }
+      },
       "SQLitePCLRaw.bundle_e_sqlite3/2.0.4": {
         "dependencies": {
           "SQLitePCLRaw.core": "2.0.4",
@@ -720,6 +734,53 @@
         },
         "compile": {
           "lib/netstandard2.0/SQLitePCLRaw.provider.dynamic_cdecl.dll": {}
+        }
+      },
+      "Swashbuckle.AspNetCore/6.1.1": {
+        "dependencies": {
+          "Microsoft.Extensions.ApiDescription.Server": "3.0.0",
+          "Swashbuckle.AspNetCore.Swagger": "6.1.1",
+          "Swashbuckle.AspNetCore.SwaggerGen": "6.1.1",
+          "Swashbuckle.AspNetCore.SwaggerUI": "6.1.1"
+        }
+      },
+      "Swashbuckle.AspNetCore.Swagger/6.1.1": {
+        "dependencies": {
+          "Microsoft.OpenApi": "1.2.3"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Swagger.dll": {
+            "assemblyVersion": "6.1.1.0",
+            "fileVersion": "6.1.1.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Swagger.dll": {}
+        }
+      },
+      "Swashbuckle.AspNetCore.SwaggerGen/6.1.1": {
+        "dependencies": {
+          "Swashbuckle.AspNetCore.Swagger": "6.1.1"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
+            "assemblyVersion": "6.1.1.0",
+            "fileVersion": "6.1.1.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {}
+        }
+      },
+      "Swashbuckle.AspNetCore.SwaggerUI/6.1.1": {
+        "runtime": {
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
+            "assemblyVersion": "6.1.1.0",
+            "fileVersion": "6.1.1.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {}
         }
       },
       "System.Collections.Immutable/5.0.0": {
@@ -2493,6 +2554,13 @@
       "path": "microsoft.entityframeworkcore.tools/5.0.3",
       "hashPath": "microsoft.entityframeworkcore.tools.5.0.3.nupkg.sha512"
     },
+    "Microsoft.Extensions.ApiDescription.Server/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LH4OE/76F6sOCslif7+Xh3fS/wUUrE5ryeXAMcoCnuwOQGT5Smw0p57IgDh/pHgHaGz/e+AmEQb7pRgb++wt0w==",
+      "path": "microsoft.extensions.apidescription.server/3.0.0",
+      "hashPath": "microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512"
+    },
     "Microsoft.Extensions.Caching.Abstractions/5.0.0": {
       "type": "package",
       "serviceable": true,
@@ -2563,6 +2631,13 @@
       "path": "microsoft.extensions.primitives/5.0.0",
       "hashPath": "microsoft.extensions.primitives.5.0.0.nupkg.sha512"
     },
+    "Microsoft.OpenApi/1.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Nug3rO+7Kl5/SBAadzSMAVgqDlfGjJZ0GenQrLywJ84XGKO0uRqkunz5Wyl0SDwcR71bAATXvSdbdzPrYRYKGw==",
+      "path": "microsoft.openapi/1.2.3",
+      "hashPath": "microsoft.openapi.1.2.3.nupkg.sha512"
+    },
     "SQLitePCLRaw.bundle_e_sqlite3/2.0.4": {
       "type": "package",
       "serviceable": true,
@@ -2590,6 +2665,34 @@
       "sha512": "sha512-AY6+vv/4ji1mCkLrS6HP/88rHT9YFKRyg3LUj8RyIk6imJMUFdQDiP8rK8gq0a/0FbqspLjK1t7rtKcr7FXRYA==",
       "path": "sqlitepclraw.provider.dynamic_cdecl/2.0.4",
       "hashPath": "sqlitepclraw.provider.dynamic_cdecl.2.0.4.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore/6.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qeGNdISDXqZT2oYWwFWgCiYTnJFxU3qYzZ+xyM/iU/kvI/KWlJGHTxlhLb3giAFxFZM5nRgkHGFb8yfNgr7+kQ==",
+      "path": "swashbuckle.aspnetcore/6.1.1",
+      "hashPath": "swashbuckle.aspnetcore.6.1.1.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.Swagger/6.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JbLsVspdKevDJ6NZT+uP06Zfr1iCDbFjmIvUyoG88GgFkM/Daaq2EGUAG7INZl+FEcoVxPG9A+yWRik75ATGbw==",
+      "path": "swashbuckle.aspnetcore.swagger/6.1.1",
+      "hashPath": "swashbuckle.aspnetcore.swagger.6.1.1.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.SwaggerGen/6.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kfoGF5scayoUVXo9wIN8OgvdYJr97V/yPdSrLNXcvbthOCU1vXTv8HJQMJ3OGyG9CpIAp2wfHI2gCmvbVKkMCQ==",
+      "path": "swashbuckle.aspnetcore.swaggergen/6.1.1",
+      "hashPath": "swashbuckle.aspnetcore.swaggergen.6.1.1.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.SwaggerUI/6.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NlR3zDm0kGWNClJWPzWrGBoQn4SY6Fgpz9D5p30bKsUYzFfM7L5vVo88BktpUyCJb6zHtCOsazN+vzQn7NVjUg==",
+      "path": "swashbuckle.aspnetcore.swaggerui/6.1.1",
+      "hashPath": "swashbuckle.aspnetcore.swaggerui.6.1.1.nupkg.sha512"
     },
     "System.Collections.Immutable/5.0.0": {
       "type": "package",
